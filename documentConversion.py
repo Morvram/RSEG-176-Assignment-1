@@ -61,3 +61,5 @@ def delete_paragraph(paragraph): #deletes the aspose.words watermark from a docx
     p.getparent().remove(p)
     p._p = p._element = None
     
+import PyRTF
+def del_par_rtf
