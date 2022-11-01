@@ -5,6 +5,8 @@
 import aspose.words as aw
 import os
 
+os.chdir("C:/Users/joshu/Dropbox/Data Science Graduate Program/Brandeis - Master's Strategic Analytics/RSEG 176/Assignment 1/RSEG-176-Assignment-1")
+
 def convertDoc (document, outform): #input: 'document' is path to .pdf document. 'outform' is the file extension.
     doc = removeWatermark(aw.Document(document))
     doc.save(document.split(".")[0] + outform)
@@ -31,3 +33,18 @@ def removeWatermark (doc): #takes a aw.Document object
     doc.watermark.set_text("_")
     return(doc)
 #The above method does NOT remove the "evaluation only" bit. So this is not the same thing as the watermark.set_text()
+
+##Extract text from a PDF
+
+import PyPDF2
+
+def extractPDFText(pdfloc): #pdfloc = filepath of a PDF
+    pdfFile = open(pdfloc, 'rb')
+    pdfReader = PyPDF2.PdfFileReader(pdfFile)
+    text = ""
+    c = pdfReader.numPages
+    for i in range(c):
+        text += (pdfReader.getPage(i).extractText())
+    return(text)
+    
+t = extractPDFText("example_pdf_syllabus.pdf")
