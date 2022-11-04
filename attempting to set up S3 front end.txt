@@ -1,0 +1,3 @@
+S3 bucket -> go to properties -> "static website hosting" -> enable
+
+My URL: http://fileconversionbucket.s3-website-us-east-1.amazonaws.com/
