@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flask and S3</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h2>Flask and AWS S3 Example</h2>
+    <hr/>
+    <div id="uploadFile">
+        <h3>File Upload</h3>
+        <form method="post" action="/upload" enctype="multipart/form-data">
+            <div class="form-group">
+                <input type="file" name="file" class="form-control-file" id="fileInput">
+            </div>
+            <button type="submit" class="btn btn-outline-primary btn-sm">Upload file</button>
+        </form>
+    </div>
+    <hr/>
+    <div id="uploadedFiles">
+        <h3>Uploaded Files</h3>
+        <small>Click on the file to download it.</small>
+        <ul class="list-group list-group-flush">
+            {% for item in contents %}
+            <li class="list-group-item">
+                <a href="/download/{{ item.Key }}"> {{ item.Key }} </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>
