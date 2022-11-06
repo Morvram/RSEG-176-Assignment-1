@@ -1,7 +1,7 @@
 import os
  
 from flask import Flask, render_template, request, redirect, send_file
-from werkzeug.utils import secure_filename
+from werkzeug import secure_filename, FileStorage
  
 from s3demo import list_files, upload_file, download_file
  
